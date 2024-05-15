@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=7, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url(https://www.100hdwallpapers.com/wallpapers/2560x1440/horizon_dark_night_sky-hd_wallpapers.jpg);
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        form {
+            color: white;
+            border: 2px solid;
+            border-radius: 10px;
+            margin: auto;
+            width: 60%;
+            background-color: rgba(76, 82, 93, 0.5);
+        }
+        #preview {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            color: white;
+        }
+        #cont {
+            display: flex;
+            padding: 10px;       
+        }
+        #cont>div {
+            padding: 10px;
+            width: 100%;
+            text-align: center
+        }
+        #inputs>input{
+            width: 100%;
+        }
+       
+        #extra {
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+        #extra>label {
+            padding: 20px;
+        }
+        #extra>input { 
+            
+            width: 60%;
+        }
+        #botonEnviar {
+            border-radius: 10px;
+            display: none;
+            width: 60%;
+            margin: auto;
+            border: none;
+            color: white;
+            background-color: black;
+            transition: 0.5s;
+        }
+        #botonEnviar:hover {
+            background-color: white;
+            color: black;
+            cursor: pointer;
+            border: 1px solid;
+        }
+        #box {
+            width: 60%;
+            margin: auto;
+            text-align: center;
+            color: white;
+        }
+        #salida,#salidacss {
+            border-radius: 30px;
+            width: 100%;
+        }
+        #prueba>div {
+            margin: auto;
+        }
+        #separadorespecial{}
+        .menu {
+            color:white;
+            background-color: black;
+            position: relative;
+            width:150px;
+            border: 2px solid;
+            text-align:center;
+            transition: 0.5s;
+            box-shadow:0px 0px 10px;
+        }
+        .menu:hover {
+            color: black;
+            background-color: white;
+            cursor: pointer;
+        }
+        .menu:hover>.submenu{
+            display:block;
+        }
+        .submenu {
+            width: 100%;
+            position: absolute;
+            display:none;
+            animation: fadein 0.5s linear;
+        }
+        .item {
+            color: white;
+            background-color: black;
+        }
+        .item:hover {
+            color: black;
+            background-color: white;
+            cursor: pointer;
+        }
+        @keyframes fadein {
+            from { opacity: 0; }
+            to {opacity:1;}
+        }
+
+    </style>
+</head>
+<body>
+    <form action="" onsubmit="return false">
+        <div id="cont">
+            <div id="labels">
+                <label for="mname">Elija el nombre del menu</label><br>
+                <label for="nitems">Elija el numero de items</label>
+            </div>
+            <div id="inputs">
+                <input type="text" id="mname" name="mname" required><br>        
+                <input type="number" id="nitems" max="10" min="2"><br>
+            </div>
+        </div>
+       <div id="extra">
+        
+       
+       </div>
+       <br>
+       <button id="botonEnviar" onclick="construir()" >CREAR MENU</button>
+           </form>
+           
+    <br>
+    <h1 id="preview">VISTA PREVIA</h1>
+    <div id="prueba"></div>
+    <br>
+    <div id="box">
+        <h1>CODIGO HTML</h1>
+    <textarea name="" id="salida" rows="10" cols="70"></textarea>
+    <h1>CODIGO CSS</h1>
+    <textarea name="" id="salidacss" rows="10" cols="70"></textarea>
+    </div>
+    <script src="dropSection.js"></script>
+</body>
+</html>
