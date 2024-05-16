@@ -4,10 +4,15 @@ var prueba=document.getElementById("prueba");
 var salida=document.getElementById("salida");
 var btnsend=document.getElementById("botonEnviar");
 
+
+    
+
 var estilos=document.getElementsByTagName("style")[0];
 var salidacss=document.getElementById("salidacss");
 
 numitems.onchange=revealNext;
+
+
 
 function revealNext (){
     extra.innerHTML="";
@@ -33,6 +38,7 @@ for (var i=0;i<cant;i++)
 
 extra.style.display="block";
 btnsend.style.display="block";
+this.nextElementByTabIndex.focus();
 }
 
 function construir(){
@@ -49,11 +55,13 @@ newName.className+="menu";
 
 var nuevoNombre=menuname.value;
 
-var mname=document.createTextNode(nuevoNombre);
+var mname=document.createTextNode(nuevoNombre+"\n\t");
 newName.appendChild(mname);
 var newSub=document.createElement("div");
 newSub.className+="submenu";
-
+var whitespace="\n\t\t";
+var ws=document.createTextNode(whitespace);
+newSub.appendChild(ws);
 for (var i=0;i<nombresItems.length;i++)
     {
         var newItem=document.createElement("div");
@@ -63,15 +71,28 @@ for (var i=0;i<nombresItems.length;i++)
         var ina=document.createTextNode(itemName);
         newItem.appendChild(ina);
         newSub.appendChild(newItem);
+        if (i==nombresItems.length-1)
+            {
+                var espb="\n\t";
+                var eb=document.createTextNode(espb);
+                newSub.appendChild(eb);
+            }
+        else {
+            var espb="\n\t\t";
+            var eb=document.createTextNode(espb);
+            newSub.appendChild(eb);
+        }
     }
 newName.appendChild(newSub);
-
+var lastspace="\n";
+var lsp=document.createTextNode(lastspace);
+newName.appendChild(lsp);
 prueba.appendChild(newName);
 salida.value=prueba.innerHTML;
-
+console.log(prueba.innerHTML);
 var textoplano=estilos.firstChild.data.split("#separadorespecial{}");
 
-salidacss.value=textoplano[1];
+salidacss.value=textoplano[1]+"\n/*IMPORTANTE: SI DESEAS AGREGAR ESTE MENÚ A UN ELEMENTO FLEX HORIZONTAL RECUERDA MODIFICAR EL VALOR width DE LA CLASE '.menu' \nFLEX CON 4 MENÚS: width:25% <--- */";
 console.log(textoplano[1]);}
 }
 
@@ -86,6 +107,23 @@ function comprobarInputs (vectorInputs){
         }
 return verif;
 
+}
+
+function copiartexto (indicador)
+{
+    if (indicador==0)
+        {var campocopy=document.getElementById("salida");
+        campocopy.select();
+        navigator.clipboard.writeText(campocopy.value);
+        
+        }
+    else {
+        var campocopy=document.getElementById("salidacss");
+        campocopy.select();
+        navigator.clipboard.writeText(campocopy.value);
+    }    
+
+    alert ("Texto copiado al portapapeles");
 }
 /* <label for="">Item 1</label>
         <input type="text" name="" id=""><br>
